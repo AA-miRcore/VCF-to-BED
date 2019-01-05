@@ -2,7 +2,7 @@
 
 vcf2bed documentation
 
-updater: Nolan Kuza (nkuza8@gmail.com)
+author: Nolan Kuza (nkuza8@gmail.com)
 date:	1/5/19
 
 #################
