@@ -3,11 +3,12 @@
 vcf2bed documentation
 
 author: Nolan Kuza (nkuza8@gmail.com)
+update: Jae Chan Hwang (hwangjc@umich.edu)
 date:	1/5/19
 
 #################
 
-Converters a .vcf file to a .bed file.
+Converts a .vcf file to a .bed file.
 
 usage: vcf2bed.py [-h] -i INPUT [-o OUTPUT]
 
@@ -16,7 +17,7 @@ optional arguments:
   -o OUTPUT, --output OUTPUT
                         The name of the file to output to (will overwrite file
                         if it already exists). If this argument is not
-                        specified, output will be to the input file name with a .bed extension.  
+                        specified, output will be to stdout.
 
 required arguments:
   -i INPUT, --input INPUT
