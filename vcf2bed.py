@@ -22,17 +22,14 @@ if args.input == args.output:
 
 vcf_file = open(args.input);
 if args.output != None:
-    bed_file_name = args.output;
-    bed_file = open(bed_file_name, "w");
-
+    bed_stream = open(args.output, "w");
+else:
+    bed_stream = sys.stdout
 
 for line in vcf_file:
     firstTabIndex = line.index('\t');
     secondTabIndex = line.index('\t', firstTabIndex + 1);
     pos = int(line[firstTabIndex:secondTabIndex]);
-    if args.output != None:
-        bed_file.write('\t'.join(["chr" + line[0:firstTabIndex], str(pos - 1), str(pos), line[secondTabIndex + 1:]]));
-    else:
-        print('\t'.join(["chr" + line[0:firstTabIndex], str(pos - 1), str(pos), line[secondTabIndex + 1:]]));
+    bed_stream.write('\t'.join(["chr" + line[0:firstTabIndex], str(pos - 1), str(pos), line[secondTabIndex + 1:]]));
 
 #########################
