@@ -29,9 +29,12 @@ if args.output != None:
 for line in vcf_file:
     firstTabIndex = line.index('\t');
     secondTabIndex = line.index('\t', firstTabIndex + 1);
+    thirdTabIndex = line.index('\t', secondTabIndex + 1);
+    fourthTabIndex = line.index('\t', thirdTabIndex + 1);
+    ref = line[thirdTabIndex:fourthTabIndex]
     pos = int(line[firstTabIndex:secondTabIndex]);
     if args.output != None:
-        bed_file.write('\t'.join(["chr" + line[0:firstTabIndex], str(pos - 1), str(pos), line[secondTabIndex + 1:]]));
+        bed_file.write('\t'.join(["chr" + line[0:firstTabIndex], str(pos - 1), str(pos + (len(ref) - 1)), line[secondTabIndex + 1:]]));
     else:
         print('\t'.join(["chr" + line[0:firstTabIndex], str(pos - 1), str(pos), line[secondTabIndex + 1:]]));
 
