@@ -33,6 +33,6 @@ for line in vcf_file:
     fourthTabIndex = line.index('\t', thirdTabIndex + 1);
     ref = line[thirdTabIndex:fourthTabIndex]
     pos = int(line[firstTabIndex:secondTabIndex]);
-    bed_stream.write('\t'.join(["chr" + line[0:firstTabIndex], str(pos - 1), str(pos), line[secondTabIndex + 1:]]));
+    bed_stream.write('\t'.join(["chr" + line[0:firstTabIndex], str(pos - 1), str(pos + (len(ref) - 1)), line[secondTabIndex + 1:]]));
 
 #########################
