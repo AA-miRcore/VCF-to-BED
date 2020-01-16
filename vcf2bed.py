@@ -27,12 +27,16 @@ else:
     bed_stream = sys.stdout
 
 for line in vcf_file:
-    firstTabIndex = line.index('\t');
-    secondTabIndex = line.index('\t', firstTabIndex + 1);
-    thirdTabIndex = line.index('\t', secondTabIndex + 1);
-    fourthTabIndex = line.index('\t', thirdTabIndex + 1);
-    ref = line[thirdTabIndex:fourthTabIndex]
-    pos = int(line[firstTabIndex:secondTabIndex]);
-    bed_stream.write('\t'.join(["chr" + line[0:firstTabIndex], str(pos - 1), str(pos + (len(ref) - 1)), line[secondTabIndex + 1:]]));
+    fields = line.split('\t')
+
+    chrom = fields[0]
+    pos = int(fields[1])
+    idd = fields[2]
+    ref = fields[3]
+
+    bed_stream.write('\t'.join(["chr" + chrom, str(pos - 1), str(pos + (len(ref) - 1))]));
+    for i in range(2, len(fields)):
+        bed_stream.write("\t" + fields[i])
+
 
 #########################
