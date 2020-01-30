@@ -12,9 +12,10 @@ globals()['args'] = _args;
 
 ##### ___main___ #####
 
-if args.input[-4:] != ".vcf":
-    print("Input file is not a .vcf file");
-    sys.exit();
+# not worth the trouble
+# if args.input[-4:] != ".vcf":
+#     print("Input file is not a .vcf file");
+#     sys.exit();
 
 if args.input == args.output:
     print("Input and output cannot be the same file")
